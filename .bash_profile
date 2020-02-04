@@ -27,10 +27,12 @@ alias gpu='git push -u origin master'
 #-------------------------------------------------------------
 # Linode CLI Aliases
 #-------------------------------------------------------------
-alias lcli="linode-cli"
-alias lcli-il="linode-cli images list"
-alias lcli-ll="linode-cli linodes list"
-alias lcli-lc="linode-cli linodes create"
-alias lcli-ld="linode-cli linodes delete"
+alias lin="linode-cli"
+alias lini="linode-cli images list"
+alias linl="linode-cli linodes list"
+alias linc="linode-cli linodes create"
+alias lind="linode-cli linodes delete"
+alias linr="linode-cli linodes rebuild"
+alias linsh="linode-cli linodes shutdown"
 
 #=============================================================
