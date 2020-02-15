@@ -32,7 +32,8 @@ alias lini="linode-cli images list"
 alias linl="linode-cli linodes list"
 alias linc="linode-cli linodes create"
 alias lind="linode-cli linodes delete"
-alias linr="linode-cli linodes rebuild"
+alias linr="linode-cli linodes reboot"
+alias linrbld="linode-cli linodes rebuild"
 alias linsh="linode-cli linodes shutdown"
 
 #=============================================================
