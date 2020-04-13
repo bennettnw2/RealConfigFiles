@@ -22,13 +22,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'https://github.com/tkhren/vim-fake'
 Plugin 'https://github.com/907th/vim-auto-save'
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 
 " VUNDLE HELP
 " ============================================
@@ -70,6 +71,8 @@ set title               " set the title of the window to be the name of the file
 " Plugin Configurations 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 au BufReadPost *.ejs set filetype=html "mark my ejs as html to enable sparkup
+let g:tex_flavor='latex'  "makes use of .tex files
+autocmd BufEnter *.tex set sw=2
 
 " Config to be able to yank and paste from Vim
 set clipboard=unnamed
@@ -90,7 +93,8 @@ set spell
 " ============================================
 " LEADER KEY 'H' SHORTCUTS
 " ============================================
-" Set leader to comma
+
+" Set leader to H 
 let mapleader = "H"
 
 " Toggle highlighting of search results
@@ -106,8 +110,24 @@ nnoremap <leader>m :set number! relativenumber!<cr>
 nnoremap <leader>s 1z=
 
 " Add date/time stamp
-nnoremap <leader>r :r !date<cr>
+nnoremap <leader>d :r !date<cr>
 " ============================================
+
+" ============================================
+" KEY REMAP SHORTCUTS for parens
+" ============================================
+inoremap (; ()<Left>
+inoremap (<CR> (<CR>);<Esc>O
+inoremap {; {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap [; []<Left>
+inoremap <; <><Left>
+inoremap /; //<Left>
+inoremap '; ''<Left>
+inoremap "; ""<Left>
+inoremap `; ``<Left>
+inoremap `<CR> ```<CR>```<Esc>O
+
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)

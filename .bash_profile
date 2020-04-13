@@ -1,39 +1,21 @@
-#-------------------------------------------------------------
-#=============================================================
-# PUBLIC ALIASES
-#=============================================================
-#-------------------------------------------------------------
-# Bash Aliases
-#-------------------------------------------------------------
-alias e='exit'
-alias c='clear'
-alias ld='ls -d'
-alias ll='ls -lh'
-alias lla='ls -lha'
-alias cl='clear && ls'
-alias lsm='ls *.md'
-alias pls='sudo $(history -p \!\!)'
-alias grep='/usr/bin/egrep'
-export PS1="_____________________ macOS | \w \n$ "
+# .bash_profile
 
-#-------------------------------------------------------------
-# Git Aliases
-#-------------------------------------------------------------
-alias gs='git status'
-alias gaa='git add -A'
-alias gc='git commit'
-alias gpu='git push -u origin master'
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+   . ~/.bashrc
+fi
 
-#-------------------------------------------------------------
-# Linode CLI Aliases
-#-------------------------------------------------------------
-alias lin="linode-cli"
-alias lini="linode-cli images list"
-alias linl="linode-cli linodes list"
-alias linc="linode-cli linodes create"
-alias lind="linode-cli linodes delete"
-alias linr="linode-cli linodes reboot"
-alias linrbld="linode-cli linodes rebuild"
-alias linsh="linode-cli linodes shutdown"
+# User specific environment and startup programs
+HISTCONTROL=ignorespace:erasedups
+export PATH=$PATH:$HOME/.local/bin
+export EDITOR="vim"
 
-#=============================================================
+# Color LS output to differentiate between directories and files
+export LS_OPTIONS="--color=auto"
+export CLICOLOR="Yes"
+export LSCOLOR=""
+
+export PS1=$'___________________ \h | \u \w \n$ '
+
+# Have bash use vim key bindings on the command line
+set -o vi
