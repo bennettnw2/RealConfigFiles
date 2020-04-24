@@ -19,7 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 " ============================================
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'mattn/emmet-vim'
 Plugin 'https://github.com/tkhren/vim-fake'
 Plugin 'https://github.com/907th/vim-auto-save'
 Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
@@ -81,6 +82,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " This option if uncommented will remove parens matching 
 " let g:loaded_matchparen=1
+
+" changing trigger key for emmet
+let g:user_emmet_leader_key='<C-E>'
+
+
 " ============================================
 
 " ============================================
@@ -114,19 +120,23 @@ nnoremap <leader>d :r !date<cr>
 " ============================================
 
 " ============================================
-" KEY REMAP SHORTCUTS for parens
+" KEY REMAP SHORTCUTS for parens and similar stuffs
 " ============================================
 inoremap (; ()<Left>
 inoremap (<CR> (<CR>);<Esc>O
 inoremap {; {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap [; []<Left>
+inoremap [<CR> [<CR>]<Esc>O
+inoremap ({<CR> ({<CR>});<Esc>O
 inoremap <; <><Left>
 inoremap /; //<Left>
 inoremap '; ''<Left>
 inoremap "; ""<Left>
 inoremap `; ``<Left>
 inoremap `<CR> ```<CR>```<Esc>O
+inoremap ;a =><Space>
+inoremap ;A =><Space>{<CR>}<Esc>O
 
 
 " ============================================
@@ -160,7 +170,7 @@ iab jvamn
 " ============================================
 " MAKING VIM PRETTY
 " ============================================
-colorscheme relaxedgreen
+" colorscheme synthwave
 syntax on
 
 " CURSOR SHAPE CHANGE IN DIFFERENT MODES
