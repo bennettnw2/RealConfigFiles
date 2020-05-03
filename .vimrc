@@ -24,6 +24,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'https://github.com/tkhren/vim-fake'
 Plugin 'https://github.com/907th/vim-auto-save'
 Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+Plugin 'vim-airline/vim-airline'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,9 +72,14 @@ set title               " set the title of the window to be the name of the file
 " ============================================
 " Plugin Configurations 
 let g:auto_save = 1  " enable AutoSave on Vim startup
-au BufReadPost *.ejs set filetype=html "mark my ejs as html to enable sparkup
+" autocmd BufReadPost *.ejs set filetype=html "mark my ejs as html to enable sparkup
 let g:tex_flavor='latex'  "makes use of .tex files
 autocmd BufEnter *.tex set sw=2
+
+" Setting for text and markdown files
+autocmd BufEnter *.txt,*.md set spell
+autocmd BufEnter *.txt,*.md set nonumber
+autocmd BufEnter *.txt,*.md set norelativenumber
 
 " Config to be able to yank and paste from Vim
 set clipboard=unnamed
@@ -94,7 +100,6 @@ let g:user_emmet_leader_key='<C-E>'
 " ============================================
 set number
 set relativenumber
-set spell
 
 " ============================================
 " LEADER KEY 'H' SHORTCUTS
@@ -143,9 +148,6 @@ inoremap ;A =><Space>{<CR>}<Esc>O
 " ABBREVIATIONS (TEXTEXPANDERS)
 " ============================================
 
-" +++ HTML +++
-iab br <BR>
-
 " +++ EJS +++
 iab {{ ({<CR><CR>})<Up><Left><TAB>
 iab ejs <% %><Left><Left><Left>
@@ -165,6 +167,10 @@ iab jvamn
 \<CR>
 \<CR><C-]>}
 \<CR>}
+
+" +++ JAVASCRIPT +++
+iab csl console.log()<Left>
+
 " ============================================
 
 " ============================================
