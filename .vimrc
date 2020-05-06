@@ -78,8 +78,6 @@ autocmd BufEnter *.tex set sw=2
 
 " Setting for text and markdown files
 autocmd BufEnter *.txt,*.md set spell
-autocmd BufEnter *.txt,*.md set nonumber
-autocmd BufEnter *.txt,*.md set norelativenumber
 
 " Config to be able to yank and paste from Vim
 set clipboard=unnamed
@@ -142,6 +140,7 @@ inoremap `; ``<Left>
 inoremap `<CR> ```<CR>```<Esc>O
 inoremap ;a =><Space>
 inoremap ;A =><Space>{<CR>}<Esc>O
+inoremap ;l ${}<Left>
 
 
 " ============================================
@@ -159,6 +158,7 @@ iab sprt System.out.print();<Left><Left>
 iab impscn import java.util.Scanner;
 iab newscn Scanner input = new Scanner(System.in);
 iab scninp [TYPE] name = input.next();
+
 iab jvamn 
 \<CR>public class [CLASSNAME] {
 \<CR><Space><Space>public static void main(String [] args) {
@@ -170,6 +170,13 @@ iab jvamn
 
 " +++ JAVASCRIPT +++
 iab csl console.log()<Left>
+
+iab trycat 
+\<CR>try {
+\<CR>} catch (err) {
+\<CR>console.error(err.message)
+\<CR>}<Up><Up><Up>
+\<C-]>
 
 " ============================================
 
