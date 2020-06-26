@@ -15,6 +15,8 @@ export LS_OPTIONS="--color=auto"
 export CLICOLOR="Yes"
 export LSCOLOR=""
 
+# Fuzzy Finder Configs
+
 export PS1=$'___________________ \h | \u \w \n$ '
 
 # Have bash use vim key bindings on the command line

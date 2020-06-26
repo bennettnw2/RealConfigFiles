@@ -1,4 +1,4 @@
-
+echo "Begin with the end in mind."
 
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -37,6 +37,11 @@ alias lind="linode-cli linodes delete"
 alias linr="linode-cli linodes reboot"
 alias linrbld="linode-cli linodes rebuild"
 alias linsh="linode-cli linodes shutdown"
+
+#-------------------------------------------------------------
+# React Aliases
+#-------------------------------------------------------------
+alias cra="create-react-app ."
 
 # These were giving me trouble when they were being sourced.  I realized
 # that this is a recursive alias in the sense that they reference another alias.

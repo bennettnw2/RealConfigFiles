@@ -21,10 +21,11 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mattn/emmet-vim'
-Plugin 'https://github.com/tkhren/vim-fake'
+" Plugin 'https://github.com/tkhren/vim-fake'
 Plugin 'https://github.com/907th/vim-auto-save'
-Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+" Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'vim-airline/vim-airline'
+Plugin 'maxmellon/vim-jsx-pretty'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -126,31 +127,28 @@ nnoremap <leader>d :r !date<cr>
 " KEY REMAP SHORTCUTS for parens and similar stuffs
 " ============================================
 inoremap (; ()<Left>
-inoremap (<CR> (<CR>);<Esc>O
+inoremap (<CR> (<CR>)<Esc>
 inoremap {; {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
+inoremap {<CR> {<CR>}<Esc>
 inoremap [; []<Left>
-inoremap [<CR> [<CR>]<Esc>O
-inoremap ({<CR> ({<CR>});<Esc>O
+inoremap [<CR> [<CR>]<Esc>
+inoremap ({<CR> ({<CR>});<Esc>
 inoremap <; <><Left>
 inoremap /; //<Left>
 inoremap '; ''<Left>
 inoremap "; ""<Left>
 inoremap `; ``<Left>
-inoremap `<CR> ```<CR>```<Esc>O
+inoremap .; ...
+inoremap `<CR> ```<CR>```<Esc>
 inoremap ;a =><Space>
-inoremap ;A =><Space>{<CR>}<Esc>O
+inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
+inoremap (( ({})<Left><Left><Space><Space><Left>
 
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
 " ============================================
-
-" +++ EJS +++
-iab {{ ({<CR><CR>})<Up><Left><TAB>
-iab ejs <% %><Left><Left><Left>
-iab eja <%= %><Left><Left><Left>
 
 " +++ JAVA +++
 iab sout System.out.println();<Left><Left>
@@ -177,6 +175,13 @@ iab trycat
 \<CR>console.error(err.message)
 \<CR>}<Up><Up><Up>
 \<C-]>
+
+" +++ REACT +++
+ab imr import<Space>React<Space>from<Space>'react'
+ab imd import<Space>ReactDOM<Space>from<Space>'react-dom'
+ab impt import<Space>PropTypes<Space>from<Space>'prop-types'
+ab exd export<Space>default<Space>
+ab rdr ReactDOM.render(, document.getElementById('root'))
 
 " ============================================
 
