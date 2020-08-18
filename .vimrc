@@ -26,6 +26,7 @@ Plugin 'https://github.com/907th/vim-auto-save'
 " Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'vim-airline/vim-airline'
 Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'godlygeek/tabular'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,7 +79,7 @@ let g:tex_flavor='latex'  "makes use of .tex files
 autocmd BufEnter *.tex set sw=2
 
 " Setting for text and markdown files
-autocmd BufEnter *.txt,*.md set spell
+" autocmd BufEnter *.txt,*.md set spell
 
 " Config to be able to yank and paste from Vim
 set clipboard=unnamed
@@ -122,6 +123,14 @@ nnoremap <leader>s 1z=
 " Add date/time stamp
 nnoremap <leader>d :r !date<cr>
 " ============================================
+
+" ============================================
+" SHORTCUTS
+" ============================================
+" NERDTree
+map <S-j> :tabp<CR>
+map <S-k> :tabn<CR>
+map <C-n> :tabnew<CR>
 
 " ============================================
 " KEY REMAP SHORTCUTS for parens and similar stuffs
@@ -188,7 +197,7 @@ ab rdr ReactDOM.render(, document.getElementById('root'))
 " ============================================
 " MAKING VIM PRETTY
 " ============================================
-" colorscheme synthwave
+colorscheme koehler
 syntax on
 
 " CURSOR SHAPE CHANGE IN DIFFERENT MODES
