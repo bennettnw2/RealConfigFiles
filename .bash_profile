@@ -9,6 +9,7 @@ fi
 HISTCONTROL=ignorespace:erasedups
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR="vim"
+export TERM=screen-256color
 
 # Color LS output to differentiate between directories and files
 export LS_OPTIONS="--color=auto"
