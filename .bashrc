@@ -43,6 +43,11 @@ alias linsh="linode-cli linodes shutdown"
 #-------------------------------------------------------------
 alias cra="create-react-app ."
 
+#-------------------------------------------------------------
+# React Aliases
+#-------------------------------------------------------------
+alias s3='s3cmd'
+
 # These were giving me trouble when they were being sourced.  I realized
 # that this is a recursive alias in the sense that they reference another alias.
 # To solve this, I can create a function or a script that the alias calls?
