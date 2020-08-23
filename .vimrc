@@ -17,7 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " ADD PLUGINS HERE
 " ============================================
-Plugin 'Yggdroot/indentLine'
+" Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mattn/emmet-vim'
@@ -105,23 +105,32 @@ set relativenumber
 " LEADER KEY 'H' SHORTCUTS
 " ============================================
 
-" Set leader to H 
-let mapleader = "H"
+" Set leader to . 
+let mapleader = "."
 
 " Toggle highlighting of search results
 nnoremap <leader><space> :nohlsearch<cr>
 
 " Toggle NERDTree
 nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>w <C-w><C-w>
 
 " Toggle Hybrid Line Numbers
 nnoremap <leader>m :set number! relativenumber!<cr>
 
 " Automatic Spell Correction
-nnoremap <leader>s 1z=
+nnoremap <leader>sp :set spell!<cr>
+nnoremap <leader>sc 1z=
 
 " Add date/time stamp
 nnoremap <leader>d :r !date<cr>
+
+" Toggle cursorcolumn
+nnoremap <leader>l :set cursorcolumn!<cr>
+
+" Toggle paste so I don't get that odd indent thing
+nnoremap <leader>p :set paste!<cr>
+
 " ============================================
 
 " ============================================
@@ -158,6 +167,8 @@ inoremap (( ({})<Left><Left><Space><Space><Left>
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
 " ============================================
+" +++ BASH +++
+" iab ;bin #!/bin/bash
 
 " +++ JAVA +++
 iab sout System.out.println();<Left><Left>
