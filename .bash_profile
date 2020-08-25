@@ -17,6 +17,7 @@ export CLICOLOR="Yes"
 export LSCOLOR=""
 
 # Fuzzy Finder Configs
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
 export PS1=$'___________________ \h | \u \w \n$ '
 
