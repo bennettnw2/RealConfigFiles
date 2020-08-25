@@ -44,9 +44,10 @@ alias linsh="linode-cli linodes shutdown"
 alias cra="create-react-app ."
 
 #-------------------------------------------------------------
-# React Aliases
+# Other Aliases
 #-------------------------------------------------------------
 alias s3='s3cmd'
+alias fd='fdfind'
 
 # These were giving me trouble when they were being sourced.  I realized
 # that this is a recursive alias in the sense that they reference another alias.
