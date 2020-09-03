@@ -71,7 +71,7 @@ set title               " set the title of the window to be the name of the file
 
 " ============================================
 " ADVANCED VIM SETTINGS
-" ============================================
+"l ============================================
 " Plugin Configurations 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 " autocmd BufReadPost *.ejs set filetype=html "mark my ejs as html to enable sparkup
@@ -105,8 +105,8 @@ set relativenumber
 " LEADER KEY 'H' SHORTCUTS
 " ============================================
 
-" Set leader to . 
-let mapleader = "."
+" Set leader to , 
+let mapleader = ","
 
 " Toggle highlighting of search results
 nnoremap <leader><space> :nohlsearch<cr>
@@ -162,7 +162,7 @@ inoremap ;a =><Space>
 inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
 inoremap (( ({})<Left><Left><Space><Space><Left>
-
+inoremap [[ [[]]<Left><Left><Space><Space><Left>
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
@@ -208,7 +208,7 @@ ab rdr ReactDOM.render(, document.getElementById('root'))
 " ============================================
 " MAKING VIM PRETTY
 " ============================================
-colorscheme koehler
+colorscheme desert
 syntax on
 
 " CURSOR SHAPE CHANGE IN DIFFERENT MODES
