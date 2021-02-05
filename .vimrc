@@ -37,7 +37,6 @@ filetype plugin on
 
 " VUNDLE HELP
 " ============================================
-" Install with:  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
@@ -162,14 +161,29 @@ inoremap `<CR> ```<CR>```<Esc>
 inoremap ;a =><Space>
 inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
-inoremap (( ({})<Left><Left><Space><Space><Left>
+inoremap (( ()<Space>{<CR>}<Esc>
 inoremap [[ [[]]<Left><Left><Space><Space><Left>
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
 " ============================================
+
+"  This is a function to eat a trailing space after
+"+ abbreviation expansion. Just place this after
+"+ the abbreviation `<c-r>=Eatchar('\s')<cr>`
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+
 " +++ BASH +++
-" iab ;bin #!/bin/bash
+iab binb #!/bin/bash<c-r>=Eatchar('\s')<cr>
+
+" +++ PYTHON +++
+iab binp #!/usr/bin/env python3<c-r>=Eatchar('\s')<cr>
+iab pt print()<Left><c-r>=Eatchar('\s')<cr>
+iab pf print(f'')<Left><Left><c-r>=Eatchar('\s')<cr>
+iab ps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
 
 " +++ JAVA +++
 iab sout System.out.println();<Left><Left>
