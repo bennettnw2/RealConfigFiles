@@ -103,7 +103,7 @@ set number
 set relativenumber
 
 " ============================================
-" LEADER KEY 'H' SHORTCUTS
+" LEADER KEY ',' SHORTCUTS
 " ============================================
 
 " Set leader to , 
@@ -131,6 +131,11 @@ nnoremap <leader>l :set cursorcolumn!<cr>
 
 " Toggle paste so I don't get that odd indent thing
 nnoremap <leader>p :set paste!<cr>
+
+" Create quotes around a word
+:nnoremap <leader>q" ciw""<Esc>P
+:nnoremap <leader>q' ciw''<Esc>P
+:nnoremap <leader>q` ciw``<Esc>P
 
 " ============================================
 
@@ -179,12 +184,13 @@ endfunc
 
 " +++ BASH +++
 iab binb #!/bin/bash<c-r>=Eatchar('\s')<cr>
+iab pf printf<Space>""<Left><c-r>=Eatchar('\s')<cr>
 
 " +++ PYTHON +++
 iab binp #!/usr/bin/env python3<c-r>=Eatchar('\s')<cr>
-iab pt print()<Left><c-r>=Eatchar('\s')<cr>
-iab pf print(f'')<Left><Left><c-r>=Eatchar('\s')<cr>
-iab ps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
+iab ppt print()<Left><c-r>=Eatchar('\s')<cr>
+iab ppf print(f'')<Left><Left><c-r>=Eatchar('\s')<cr>
+iab pps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
 
 " +++ JAVA +++
 iab sout System.out.println();<Left><Left>
