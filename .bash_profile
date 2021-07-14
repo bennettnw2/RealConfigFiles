@@ -19,7 +19,5 @@ export LSCOLOR=""
 # Fuzzy Finder Configs
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
-export PS1=$'___________________ \h | \u \w \n$ '
-
 # Have bash use vim key bindings on the command line
 set -o vi
