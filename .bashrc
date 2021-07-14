@@ -1,8 +1,12 @@
 echo "Begin with the end in mind."
 
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+if [ -f /etc/bash_profile ]; then
+        . /etc/bash_profile
 fi
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 
 #-------------------------------------------------------------
 # Bash Aliases
@@ -15,8 +19,7 @@ alias lla='ls -lha'
 alias cl='clear && ls'
 alias lsm='ls *.md'
 alias pls='sudo $(history -p \!\!)'
-alias grep='/usr/bin/egrep'
-export PS1=$'___________________ \h | \u \w \n$ '
+alias rm='mv $1 ~/.trash'
 
 #-------------------------------------------------------------
 # Git Aliases
