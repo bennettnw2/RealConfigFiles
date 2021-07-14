@@ -1,7 +1,7 @@
 echo "Begin with the end in mind."
 
-if [ -f /etc/bash_profile ]; then
-        . /etc/bash_profile
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
 fi
 
 alias ls='ls --color=auto'
