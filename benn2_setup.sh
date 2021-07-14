@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # add security section here
+# ==================================================================================================== 
 # no root log-in
 # remove unused ports
 
@@ -12,6 +13,9 @@ sudo apt install lynx
 sudo apt install git
 sudo apt install cups
 
+# backup .bashrc and .bash_profile
+# ==================================================================================================== 
+
 # Configure Software
 # ==================================================================================================== 
 wget -O .vimrc https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.vimrc  &&  \
@@ -22,3 +26,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &
 . .bash_profile && . .bashrc
 
 # Upload Config files and send to /etc/skel
+# ==================================================================================================== 
