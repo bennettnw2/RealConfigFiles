@@ -9,6 +9,7 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 
 export PS1=$'___________________ \h | \u \w \n$ '
+export PATH="$PATH:/home/$USER/.local/bin"
 
 #-------------------------------------------------------------
 # Bash Aliases
@@ -44,11 +45,6 @@ alias lind="linode-cli linodes delete"
 alias linr="linode-cli linodes reboot"
 alias linrbld="linode-cli linodes rebuild"
 alias linsh="linode-cli linodes shutdown"
-
-#-------------------------------------------------------------
-# React Aliases
-#-------------------------------------------------------------
-alias cra="create-react-app ."
 
 #-------------------------------------------------------------
 # Other Aliases
