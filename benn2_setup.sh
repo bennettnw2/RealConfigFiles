@@ -6,11 +6,11 @@
 
 # Install Software - vim, tmux, lynx, git, cups
 # ==================================================================================================== 
-apt install vim
-apt install tmux
-apt install lynx
-apt install git
-apt install cups
+sudo apt install vim
+sudo apt install tmux
+sudo apt install lynx
+sudo apt install git
+sudo apt install cups
 
 # Configure Software
 # ==================================================================================================== 
