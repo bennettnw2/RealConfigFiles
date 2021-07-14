@@ -22,6 +22,8 @@ alias cl='clear && ls'
 alias lsm='ls *.md'
 alias pls='sudo $(history -p \!\!)'
 alias rm='mv $1 ~/.trash'
+alias clp='xclip -selection clipboard'
+alias clip='xclip -selection clipboard tmp.txt'
 
 #-------------------------------------------------------------
 # Git Aliases
