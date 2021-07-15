@@ -169,6 +169,7 @@ inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
 inoremap (( ()<Space>{<CR>}<Esc>
 inoremap [[ [[]]<Left><Left><Space><Space><Left>
+inoremap {{ {{}}<Left><Left><Space><Space><Left>
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
