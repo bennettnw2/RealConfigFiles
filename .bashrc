@@ -47,6 +47,17 @@ alias linrbld="linode-cli linodes rebuild"
 alias linsh="linode-cli linodes shutdown"
 
 #-------------------------------------------------------------
+# systemctl Aliases
+#-------------------------------------------------------------
+alias ctlstt="systemctl start"
+alias ctlstp="systemctl stop"
+alias ctlrst="systemctl restart"
+alias ctlsts="systemctl status"
+alias ctlrld="systemctl reload"
+alias ctldis="systemctl disable"
+alias ctlena="systemctl enable"
+
+#-------------------------------------------------------------
 # Other Aliases
 #-------------------------------------------------------------
 alias s3='s3cmd'
