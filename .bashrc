@@ -39,7 +39,7 @@ alias gpu='git push -u origin master'
 #-------------------------------------------------------------
 alias lin="linode-cli"
 alias lini="linode-cli images list"
-alias linl="linode-cli linodes list --text | awk '{print $2,$1,$7}' | column -t -s' '"
+alias linl="linode-cli linodes list --text | awk '{print $2,$1,$7}' | column -t"
 alias linc="linode-cli linodes create"
 alias lind="linode-cli linodes delete"
 alias linr="linode-cli linodes reboot"
