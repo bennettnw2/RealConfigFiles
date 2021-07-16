@@ -86,6 +86,7 @@ autocmd BufEnter *.tex set sw=2
 set clipboard=unnamed
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " This option if uncommented will remove parens matching 
 " let g:loaded_matchparen=1
