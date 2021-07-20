@@ -18,11 +18,11 @@ sudo apt install cups
 
 # Configure Software
 # ==================================================================================================== 
-wget -O .vimrc https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.vimrc  &&  \
-wget -O .tmux.conf https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.tmux.conf  &&  \
-wget -O .bashrc https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.bashrc    && \
-wget -O .bash_profile https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.bash_profile  && \
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &&. vim +PlugInstall +qall && \
+wget -O .vimrc https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.vimrc
+wget -O .tmux.conf https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.tmux.conf
+wget -O .bashrc https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.bashrc
+wget -O .bash_profile https://raw.githubusercontent.com/bennettnw2/RealConfigFiles/master/.bash_profile
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 . .bash_profile && . .bashrc
 
 # Upload Config files and send to /etc/skel
