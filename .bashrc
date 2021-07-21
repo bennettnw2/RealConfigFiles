@@ -22,7 +22,8 @@ alias lla='ls -lha'
 alias cl='clear && ls'
 alias lsm='ls *.md'
 alias pls='sudo $(history -p \!\!)'
-alias rm='mv $1 ~/.trash'
+trsh () { mv $1 /home/$USER/.trash; }
+mkcd () { mkdir -p -- "$1" && cd -P -- "$1"; }
 alias clp='xclip -selection clipboard'
 alias clip='xclip -selection clipboard tmp.txt'
 
@@ -39,7 +40,7 @@ alias gpu='git push -u origin master'
 #-------------------------------------------------------------
 alias lin="linode-cli"
 alias lini="linode-cli images list"
-alias linl="linode-cli linodes list --text | awk '{print $2,$1,$7}' | column -t"
+linl () { linode-cli linodes list --text | awk '{print $1,$2,$7}' | column -t; }
 alias linc="linode-cli linodes create"
 alias lind="linode-cli linodes delete"
 alias linr="linode-cli linodes reboot"
