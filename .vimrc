@@ -60,7 +60,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
-" set colorcolumn=90    " setting end point
+" set colorcolumn=80    " setting end point
 
 set hlsearch            " highlight matches; turn off with :nohlsearch when done searching 
 set incsearch           " search as characters are entered
@@ -189,10 +189,17 @@ iab binb #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iab pf printf<Space>""<Left><c-r>=Eatchar('\s')<cr>
 
 " +++ PYTHON +++
-iab binp #!/usr/bin/env python3<c-r>=Eatchar('\s')<cr>
-iab ppt print()<Left><c-r>=Eatchar('\s')<cr>
-iab ppf print(f'')<Left><Left><c-r>=Eatchar('\s')<cr>
-iab pps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
+inoremap """ """"""<Left><Left><Left>
+inoremap ;def def __init__():<Left><Left>
+inoremap ;ppo print()<Left><c-r>=Eatchar('\s')<cr>
+inoremap ;inp input("")<Left><Left><c-r>=Eatchar('\s')<cr>
+inoremap ;pps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
+inoremap ;ppf print(f"")<Left><Left><c-r>=Eatchar('\s')<cr>
+inoremap ;binp #!/usr/bin/env python3<c-r>=Eatchar('\s')<cr>
+inoremap ;impplt import matplotlib.pyplot as plt
+" This will allow me to run a python program from within vim using the F9 key
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
 
 " +++ JAVA +++
 iab sout System.out.println();<Left><Left>
@@ -221,11 +228,11 @@ iab trycat
 \<C-]>
 
 " +++ REACT +++
-ab imr import<Space>React<Space>from<Space>'react'
-ab imd import<Space>ReactDOM<Space>from<Space>'react-dom'
-ab impt import<Space>PropTypes<Space>from<Space>'prop-types'
-ab exd export<Space>default<Space>
-ab rdr ReactDOM.render(, document.getElementById('root'))
+" ab imr import<Space>React<Space>from<Space>'react'
+" ab imd import<Space>ReactDOM<Space>from<Space>'react-dom'
+" ab impt import<Space>PropTypes<Space>from<Space>'prop-types'
+" ab exd export<Space>default<Space>
+" ab rdr ReactDOM.render(, document.getElementById('root'))
 
 " ============================================
 
