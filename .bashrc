@@ -65,6 +65,7 @@ alias ctlena="systemctl enable"
 #-------------------------------------------------------------
 alias s3='s3cmd'
 alias fd='fdfind'
+alias py='python3'
 
 # These were giving me trouble when they were being sourced.  I realized
 # that this is a recursive alias in the sense that they reference another alias.
