@@ -24,7 +24,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'godlygeek/tabular'
 Plugin 'dense-analysis/ale'
-" Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 " Plugin 'chrisbra/unicode.vim'
 " Plugin 'Yggdroot/indentLine'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
