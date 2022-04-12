@@ -17,16 +17,19 @@ Plugin 'VundleVim/Vundle.vim'
 
 " ADD PLUGINS HERE
 " ============================================
-" Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mattn/emmet-vim'
-" Plugin 'https://github.com/tkhren/vim-fake'
 Plugin 'https://github.com/907th/vim-auto-save'
-" Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'vim-airline/vim-airline'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'godlygeek/tabular'
+Plugin 'dense-analysis/ale'
+" Plugin 'fatih/vim-go'
+" Plugin 'chrisbra/unicode.vim'
+" Plugin 'Yggdroot/indentLine'
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+" Plugin 'https://github.com/tkhren/vim-fake'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,6 +62,7 @@ set expandtab
 "Need to set tabstop and shiftwidth to 2 in conjunction with expandtab (default tabstop is 8!)
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 
 " set colorcolumn=80    " setting end point
 
@@ -68,6 +72,10 @@ set linebreak           " set linebreak on so that full words are wrapped
 set laststatus=2        " set the title of the vim window to show the filename
 set ttyfast             " helps with screen redraws smoothness
 set title               " set the title of the window to be the name of the file
+
+"This is to see special/hidden characters
+" use leader h to toggle this on and off
+set listchars=eol:$,tab:>-,space:·,nbsp:␣,trail:~,extends:>,precedes:<
 " ============================================
 
 " ============================================
@@ -86,7 +94,7 @@ autocmd BufEnter *.tex set sw=2
 set clipboard=unnamed
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType go set ts=2 sw=2 sts=2 noet nolist autowrite
 
 " This option if uncommented will remove parens matching 
 " let g:loaded_matchparen=1
@@ -102,6 +110,7 @@ let g:user_emmet_leader_key='<C-E>'
 " ============================================
 set number
 set relativenumber
+set noswapfile
 
 " ============================================
 " LEADER KEY ',' SHORTCUTS
@@ -138,6 +147,8 @@ nnoremap <leader>p :set paste!<cr>
 :nnoremap <leader>q' ciw''<Esc>P
 :nnoremap <leader>q` ciw``<Esc>P
 
+" Toggle list to see hidden characters
+nnoremap <leader>h :set list!<cr>
 " ============================================
 
 " ============================================
@@ -151,26 +162,33 @@ map <C-n> :tabnew<CR>
 " ============================================
 " KEY REMAP SHORTCUTS for parens and similar stuffs
 " ============================================
-inoremap (; ()<Left>
-inoremap (<CR> (<CR>)<Esc>
-inoremap {; {}<Left>
-inoremap {<CR> {<CR>}<Esc>
-inoremap [; []<Left>
-inoremap [<CR> [<CR>]<Esc>
-inoremap ({<CR> ({<CR>});<Esc>
-inoremap <; <><Left>
+inoremap ( ()<Left>
+" inoremap (; ()<Left>
+" inoremap (<CR> (<CR>)<Esc>
+inoremap { {}<Left>
+" inoremap {; {}<Left>
+" inoremap {<CR> {<CR>}<Esc>
+inoremap [ []<Left>
+" inoremap [; []<Left>
+" inoremap [<CR> [<CR>]<Esc>
+" inoremap ({<CR> ({<CR>});<Esc>
+inoremap < <><Left>
+" inoremap <; <><Left>
 inoremap /; //<Left>
-inoremap '; ''<Left>
-inoremap "; ""<Left>
-inoremap `; ``<Left>
-inoremap .; ...
+inoremap ' ''<Left>
+" inoremap '; ''<Left>
+inoremap " ""<Left>
+" inoremap "; ""<Left>
+inoremap ` ``<Left>
+" inoremap `; ``<Left>
+inoremap ;. ...
 inoremap `<CR> ```<CR>```<Esc>
 inoremap ;a =><Space>
 inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
-inoremap (( ()<Space>{<CR>}<Esc>
-inoremap [[ [[]]<Left><Left><Space><Space><Left>
-inoremap {{ {{}}<Left><Left><Space><Space><Left>
+inoremap ;( ()<Space>{<CR>}<Esc>
+inoremap ;[ [[]]<Left><Left><Space><Space><Left>
+inoremap ;{ {{}}<Left><Left><Space><Space><Left>
 
 " ============================================
 " ABBREVIATIONS (TEXTEXPANDERS)
