@@ -23,7 +23,7 @@ Plugin 'https://github.com/907th/vim-auto-save'
 Plugin 'vim-airline/vim-airline'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'godlygeek/tabular'
-Plugin 'dense-analysis/ale'
+" Plugin 'dense-analysis/ale'
 Plugin 'fatih/vim-go'
 " Plugin 'chrisbra/unicode.vim'
 " Plugin 'Yggdroot/indentLine'
@@ -64,6 +64,9 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+" Setting indentation for go files
+autocmd FileType go set ts=4 sw=4 sts=4 noet nolist autowrite
+
 " set colorcolumn=80    " setting end point
 
 set hlsearch            " highlight matches; turn off with :nohlsearch when done searching 
@@ -94,7 +97,6 @@ autocmd BufEnter *.tex set sw=2
 set clipboard=unnamed
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType go set ts=2 sw=2 sts=2 noet nolist autowrite
 
 " This option if uncommented will remove parens matching 
 " let g:loaded_matchparen=1
@@ -167,16 +169,16 @@ inoremap ( ()<Left>
 " inoremap (<CR> (<CR>)<Esc>
 inoremap { {}<Left>
 " inoremap {; {}<Left>
-" inoremap {<CR> {<CR>}<Esc>
+inoremap {<CR> {<CR>}<Esc>O
 inoremap [ []<Left>
 " inoremap [; []<Left>
 " inoremap [<CR> [<CR>]<Esc>
 " inoremap ({<CR> ({<CR>});<Esc>
 inoremap < <><Left>
 " inoremap <; <><Left>
-inoremap /; //<Left>
-inoremap ' ''<Left>
-" inoremap '; ''<Left>
+" inoremap /; //<Left>
+" inoremap ' ''<Left>
+inoremap '; ''<Left>
 inoremap " ""<Left>
 " inoremap "; ""<Left>
 inoremap ` ``<Left>
@@ -205,6 +207,16 @@ endfunc
 " +++ BASH +++
 iab binb #!/bin/bash<c-r>=Eatchar('\s')<cr>
 iab pf printf<Space>""<Left><c-r>=Eatchar('\s')<cr>
+
+" +++ GOLANG +++
+inoremap :: :=<Space>
+" this looks weird because it is tied to the above "KEY REMAP SHORTCUTS"
+iab fpln fmt.Println(<c-r>=Eatchar('\s')<cr>
+iab fpft fmt.Printf("<c-r>=Eatchar('\s')<cr>
+iab fcmn func main(<Right> {<CR><ESC>O<CR>
+" This will allow me to run a golang program from within vim using the F9 key
+autocmd FileType go map <buffer> <F9> :w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
+autocmd FileType go imap <buffer> <F9> <esc>:w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
 
 " +++ PYTHON +++
 inoremap """ """"""<Left><Left><Left>
