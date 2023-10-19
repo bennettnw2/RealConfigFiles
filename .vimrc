@@ -78,7 +78,7 @@ set title               " set the title of the window to be the name of the file
 
 "This is to see special/hidden characters
 " use leader h to toggle this on and off
-set listchars=eol:$,tab:>-,space:·,nbsp:␣,trail:~,extends:>,precedes:<
+set listchars=eol:$,tab:>-,space:┬╖,nbsp:ΓÉú,trail:~,extends:>,precedes:<
 " ============================================
 
 " ============================================
@@ -99,7 +99,7 @@ set clipboard=unnamed
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " This option if uncommented will remove parens matching 
-" let g:loaded_matchparen=1
+let g:loaded_matchparen=1
 
 " changing trigger key for emmet
 let g:user_emmet_leader_key='<C-E>'
@@ -135,8 +135,11 @@ nnoremap <leader>m :set number! relativenumber!<cr>
 nnoremap <leader>sp :set spell!<cr>
 nnoremap <leader>sc 1z=
 
-" Add date/time stamp
-nnoremap <leader>d :r !date<cr>
+" Add date stamp
+nnoremap <leader>d :r !date +'\%b\%e \%a'<cr>$
+
+" Add time stamp
+nnoremap <leader>t :r !date +'\%R - '<cr>$
 
 " Toggle cursorcolumn
 nnoremap <leader>l :set cursorcolumn!<cr>
@@ -164,28 +167,21 @@ map <C-n> :tabnew<CR>
 " ============================================
 " KEY REMAP SHORTCUTS for parens and similar stuffs
 " ============================================
-inoremap ( ()<Left>
-" inoremap (; ()<Left>
+inoremap (; ()<Left>
 " inoremap (<CR> (<CR>)<Esc>
-inoremap { {}<Left>
-" inoremap {; {}<Left>
+inoremap {; {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
-inoremap [ []<Left>
-" inoremap [; []<Left>
+inoremap [; []<Left>
 " inoremap [<CR> [<CR>]<Esc>
 " inoremap ({<CR> ({<CR>});<Esc>
-inoremap < <><Left>
-" inoremap <; <><Left>
+inoremap <; <><Left>
 " inoremap /; //<Left>
-" inoremap ' ''<Left>
 inoremap '; ''<Left>
-inoremap " ""<Left>
-" inoremap "; ""<Left>
-inoremap ` ``<Left>
-" inoremap `; ``<Left>
+inoremap "; ""<Left>
+inoremap `; ``<Left>
 inoremap ;. ...
 inoremap `<CR> ```<CR>```<Esc>
-inoremap ;a =><Space>
+" inoremap ;a =><Space>
 inoremap ;A =><Space>{<CR>}<Esc>
 inoremap ;l ${}<Left>
 inoremap ;( ()<Space>{<CR>}<Esc>
@@ -210,10 +206,13 @@ iab pf printf<Space>""<Left><c-r>=Eatchar('\s')<cr>
 
 " +++ GOLANG +++
 inoremap :: :=<Space>
+inoremap !! !=<Space>
+iab iferr if err != nil {<CR>log.Fatal(;";<c-r>=Eatchar('\s')<cr>
 " this looks weird because it is tied to the above "KEY REMAP SHORTCUTS"
-iab fpln fmt.Println(<c-r>=Eatchar('\s')<cr>
-iab fpft fmt.Printf("<c-r>=Eatchar('\s')<cr>
-iab fcmn func main(<Right> {<CR><ESC>O<CR>
+inoremap fpln fmt.Println()<Left><c-r>=Eatchar('\s')<cr>
+inoremap fptf fmt.Printf("")<Left><Left><c-r>=Eatchar('\s')<cr>
+iab funm func main(<Right> {<CR><ESC>O<CR>
+iab funt func Test(t *testing.T)<Space>{<CR>t.Parallel()
 " This will allow me to run a golang program from within vim using the F9 key
 autocmd FileType go map <buffer> <F9> :w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
 autocmd FileType go imap <buffer> <F9> <esc>:w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
@@ -270,7 +269,14 @@ iab trycat
 " MAKING VIM PRETTY
 " ============================================
 colorscheme desert
+
 syntax on
+
+" vimdiff highlighting
+hi DiffAdd      ctermfg=NONE          ctermbg=Green
+hi DiffChange   ctermfg=NONE          ctermbg=NONE
+hi DiffDelete   ctermfg=LightBlue     ctermbg=Red
+hi DiffText     ctermfg=Yellow        ctermbg=Red
 
 " CURSOR SHAPE CHANGE IN DIFFERENT MODES
 " ============================================
