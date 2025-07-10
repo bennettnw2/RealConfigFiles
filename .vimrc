@@ -20,11 +20,18 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'https://github.com/907th/vim-auto-save'
-Plugin 'vim-airline/vim-airline'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'godlygeek/tabular'
-" Plugin 'dense-analysis/ale'
 Plugin 'fatih/vim-go'
+Plugin 'carlsmedstad/vim-bicep'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'itchyny/lightline.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'junegunn/vim-emoji'
+Plugin 'drewipson/glowing-vim-markdown-preview'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'dense-analysis/ale'
 " Plugin 'chrisbra/unicode.vim'
 " Plugin 'Yggdroot/indentLine'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -79,6 +86,9 @@ set title               " set the title of the window to be the name of the file
 "This is to see special/hidden characters
 " use leader h to toggle this on and off
 set listchars=eol:$,tab:>-,space:┬╖,nbsp:ΓÉú,trail:~,extends:>,precedes:<
+
+" The mode information is now handled by lightline
+set noshowmode
 " ============================================
 
 " ============================================
@@ -91,7 +101,7 @@ let g:tex_flavor='latex'  "makes use of .tex files
 autocmd BufEnter *.tex set sw=2
 
 " Setting for text and markdown files
-" autocmd BufEnter *.txt,*.md set spell
+autocmd FileType *.md setlocal syntax=off
 
 " Config to be able to yank and paste from Vim
 set clipboard=unnamed
@@ -115,6 +125,25 @@ set relativenumber
 set noswapfile
 
 " ============================================
+" NERDTree Settings
+" ============================================
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Reload NERDTree when the cursor is in the NERDTree's window
+autocmd BufEnter NERD_tree_* | execute 'normal R'
+au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
+
+" Reload NERDTree when we change the directory
+augroup DIRCHANGE
+    au!
+    autocmd DirChanged global :NERDTreeCWD
+augroup END
+
+" Close NERDTree if it is the only window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ============================================
 " LEADER KEY ',' SHORTCUTS
 " ============================================
 
@@ -135,11 +164,8 @@ nnoremap <leader>m :set number! relativenumber!<cr>
 nnoremap <leader>sp :set spell!<cr>
 nnoremap <leader>sc 1z=
 
-" Add date stamp
-nnoremap <leader>d :r !date +'\%b\%e \%a'<cr>$
-
-" Add time stamp
-nnoremap <leader>t :r !date +'\%R - '<cr>$
+" Add date/time stamp
+nnoremap <leader>d :execute "normal! a" .system("date +'\%b \%e \%Y - \%R'")<cr>
 
 " Toggle cursorcolumn
 nnoremap <leader>l :set cursorcolumn!<cr>
@@ -154,6 +180,9 @@ nnoremap <leader>p :set paste!<cr>
 
 " Toggle list to see hidden characters
 nnoremap <leader>h :set list!<cr>
+
+" Toggle Markdown Preview
+nnoremap <leader>mp :MarkdownPreviewToggle<cr>
 " ============================================
 
 " ============================================
@@ -172,7 +201,7 @@ inoremap (; ()<Left>
 inoremap {; {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap [; []<Left>
-" inoremap [<CR> [<CR>]<Esc>
+inoremap [<CR> [<CR>]<Esc>O
 " inoremap ({<CR> ({<CR>});<Esc>
 inoremap <; <><Left>
 " inoremap /; //<Left>
@@ -210,65 +239,20 @@ inoremap !! !=<Space>
 iab iferr if err != nil {<CR>log.Fatal(;";<c-r>=Eatchar('\s')<cr>
 " this looks weird because it is tied to the above "KEY REMAP SHORTCUTS"
 inoremap fpln fmt.Println()<Left><c-r>=Eatchar('\s')<cr>
-inoremap fptf fmt.Printf("")<Left><Left><c-r>=Eatchar('\s')<cr>
+inoremap fpf fmt.Printf("")<Left><Left><c-r>=Eatchar('\s')<cr>
 iab funm func main(<Right> {<CR><ESC>O<CR>
 iab funt func Test(t *testing.T)<Space>{<CR>t.Parallel()
 " This will allow me to run a golang program from within vim using the F9 key
 autocmd FileType go map <buffer> <F9> :w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
 autocmd FileType go imap <buffer> <F9> <esc>:w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
 
-" +++ PYTHON +++
-inoremap """ """"""<Left><Left><Left>
-inoremap ;def def __init__():<Left><Left>
-inoremap ;ppo print()<Left><c-r>=Eatchar('\s')<cr>
-inoremap ;inp input("")<Left><Left><c-r>=Eatchar('\s')<cr>
-inoremap ;pps print("")<Left><Left><c-r>=Eatchar('\s')<cr>
-inoremap ;ppf print(f"")<Left><Left><c-r>=Eatchar('\s')<cr>
-inoremap ;binp #!/usr/bin/env python3<c-r>=Eatchar('\s')<cr>
-inoremap ;impplt import matplotlib.pyplot as plt
-" This will allow me to run a python program from within vim using the F9 key
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
-
-" +++ JAVA +++
-iab sout System.out.println();<Left><Left>
-iab sprt System.out.print();<Left><Left>
-iab impscn import java.util.Scanner;
-iab newscn Scanner input = new Scanner(System.in);
-iab scninp [TYPE] name = input.next();
-
-iab jvamn 
-\<CR>public class [CLASSNAME] {
-\<CR><Space><Space>public static void main(String [] args) {
-\<CR>
-\<CR><Space><Space><Space><Space>System.out.println( "Hello Borld!" );
-\<CR>
-\<CR><C-]>}
-\<CR>}
-
-" +++ JAVASCRIPT +++
-iab csl console.log()<Left>
-
-iab trycat 
-\<CR>try {
-\<CR>} catch (err) {
-\<CR>console.error(err.message)
-\<CR>}<Up><Up><Up>
-\<C-]>
-
-" +++ REACT +++
-" ab imr import<Space>React<Space>from<Space>'react'
-" ab imd import<Space>ReactDOM<Space>from<Space>'react-dom'
-" ab impt import<Space>PropTypes<Space>from<Space>'prop-types'
-" ab exd export<Space>default<Space>
-" ab rdr ReactDOM.render(, document.getElementById('root'))
-
-" ============================================
+" Do not auto indent lines that are comments in yaml
+autocmd FileType yaml setlocal indentkeys-=0#
 
 " ============================================
 " MAKING VIM PRETTY
 " ============================================
-colorscheme desert
+colorscheme elflord
 
 syntax on
 
@@ -284,3 +268,12 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " ============================================
+
+" lightline (infobar) settings
+" ============================================
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
+      \ }
+      \ }
