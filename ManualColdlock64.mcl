@@ -1,0 +1,63 @@
+^g::Reload ; reloads ManualColdLock
+
+; ****************Vim Arrow Keybindings
+!h::Send "{Left}"
+!j::Send "{Down}"
+!k::Send "{Up}"
+!l::Send "{Right}"
+
+; ****************Custom Key Mapings
+CapsLock::Esc
+RAlt::RCtrl
+RCtrl::RAlt
+
+; ********************Github Commands
+:*:;gss::git status -b --short{Enter}
+:*:;gsl::git status{Enter}
+:*:;gg::git log -10 --oneline --graph --decorate --all{Enter}
+:*:;gaa::git add --all{Enter}
+:*:;gct::git commit{Enter}
+:*:;gaD::git add Dockerfile{Enter}
+:*:;gph::git push{Enter}
+:*:;gpl::git pull{Enter}
+:*X:;gcl::SendText "git clone https://github.com/mmctech/" A_Clipboard ".git`n" 
+:*:;mpro::is:open is:pr author:Nygel///////////////Enter}
+:*:;mprc::is:closed is:pr author:Nygel///////////////Enter}
+
+
+; ********************Github CLI Commands
+:*:;gwr::gh workflow run{Enter}
+:*:;grw::gh run watch{Enter}
+:*:;grl::gh run list -L 3{Enter}
+:*X:;grvl::SendText "gh run view $(gh run list -L 1 --json databaseId | jq -r .[].databaseId) --log | less -R`n"
+
+; *******************Docker Commands
+; NOTE: `n in the below scripts are newlines
+; NOTE: *X is a hot string option that executes the text
+:*X:;dkl::SendText "docker logs " A_Clipboard " | less`n" 
+:*X:;dkf::SendText "docker logs -f --tail 1000 " A_Clipboard "`n"
+:*X:;dke::SendText "docker exec " A_Clipboard " env`n" 
+:*X:;fdl::SendText "sudo find /var/lib/docker/containers/ -name *-json.log -exec ls -lh {} \; | awk '{print $5, $NF}'`n"
+
+; ********************Text Expanders
+::k8s::kubernetes
+::K8s::Kubernetes
+:*:;shg::┬»\_(πâä)_/┬»{return}
+:*:[i::I
+
+; ********************Azure CLI Commands
+:*X:;ard::SendText "az resource delete --ids " A_Clipboard "`n"
+
+; ********************SSH Access
+:*X:;sshu::SendText "ssh &&&&&&&&&" A_Clipboard "///////////////`n"
+:*X:;sshb::SendText "ssh ***********" A_Clipboard "`n"
+:*X:;sshr::SendText "ssh root@" A_Clipboard "`n"
+
+; ********************Markdown
+:*X:;mdl::SendText "[](" A_Clipboard ")"
+
+; Use Ctl+4 to send Alt+F4 to close a window
+^4::Send !"{F4}"
+
+; ***** Examples
+^j::MsgBox "Continued, incremental progress", "Affirmation"
